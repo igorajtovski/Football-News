@@ -1,0 +1,64 @@
+﻿@using euro1.Models
+@{
+    ViewBag.Title = "Table";
+    Layout = "~/Views/_layout.cshtml";
+}
+
+<h1 align="center">League Table</h1>
+
+    <table align="center">
+        <tr>
+            <th>Pos.</th>
+            <th>Team</th>
+             <th>Played</th>
+            <th>W</th>
+            
+            <th>D</th>
+            
+            <th>L</th>
+            
+            <th>F</th>
+            
+            <th>A</th>
+            
+            <th>+/-</th>
+            
+            <th>Points</th>
+            
+        </tr>
+
+        @if (ViewData["Result"] != null)
+        {
+
+            int count = 0;
+            foreach (Table t in (IEnumerable<Table>)ViewData["Result"])
+            {
+                count++;
+                <tr>
+                    <td>@count</td>
+                   
+                    <td align="left">
+                        <a href="/Table/AllMatches/@t.Id">@t.TeamName</a>
+                    </td>
+                    
+                    <td align="center">@t.totoal</td>
+                    
+                    <td>@t.Wins</td>
+                    
+                    <td>@t.Draws</td>
+                    
+                    <td>@t.Losses</td>
+                    
+                    <td>@t.GoalsFor</td>
+                    
+                    <td>@t.GoalsAgains</td>
+                    
+                    <td>@t.Difference</td>
+                    
+                    <td align="center">@t.Points</td>
+                    
+                </tr>
+            }
+        }
+    </table>
+

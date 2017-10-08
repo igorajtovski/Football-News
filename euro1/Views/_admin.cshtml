@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <!-- Style Sheets -->
+    <link rel="stylesheet" href="/content/styles/site.css" />
+    <link rel="stylesheet" href="/content/styles/boxes.css" />
+    <link rel="stylesheet" href="/content/styles/site.css" />
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+
+</head>
+<body class="admin">
+    <div class="header">
+        <div class="container">
+            <div class="col col67 logo">
+                <p><img src="~/Content/Images/whistle.png" />FinalWhistle<span>Admin Zone!</span></p>
+            </div>
+            <div class="col col33">
+                ...
+            </div>
+            <br class="clearFix" />
+            <div class="nav">
+                <ul>
+                    <li class="selected"><a href="/admin">Dashboard</a></li>
+                    <li><a href="/teams">Team Management</a></li>
+                    <li><a href="/matches">Matches</a></li>
+                    <li><a href="/matchreports">Match Reports</a></li>
+                    <li><a href="/">Back to Website</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="pagecontent">
+            @RenderBody()
+        </div>
+    </div>
+    <div class="footer">
+        <div class="container">
+            <p>Copyright @DateTime.Now.Year <a href="http://www.swoo.co.uk">Steve Woods</a> - All Rights Reserved. <a href="http://github.com/woodss/finalwhistle">See this project on GitHub</a></p>
+        </div>
+    </div>
+</body>
+</html>

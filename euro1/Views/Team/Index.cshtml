@@ -1,0 +1,38 @@
+﻿@using euro1.Models
+
+@{
+    ViewBag.Title = "Index";
+    int counter = 0;
+}
+
+<h2>Teams</h2>
+@if (User.IsInRole("Admin"))
+{
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+}
+<div class="column">
+    @foreach (Team t in (IEnumerable<Team>)ViewData["MyTeams"])
+    {
+
+        if (counter != 0 && counter % 4 == 0)
+        {
+
+            @:</div>
+            @:<div class="column">
+        }
+
+        <div class="col-md-4">
+            <p>
+                <a href="/Team/Team/@t.TeamId">
+                    <img src="@t.Image" />
+                </a>
+            </p>
+            <p>@t.Name</p>
+        </div>
+        counter++;
+
+    }
+
+</div>

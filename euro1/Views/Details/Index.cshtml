@@ -1,0 +1,52 @@
+﻿@model IEnumerable<euro1.Models.MatchDetails>
+
+@{
+    ViewBag.Title = "Match Details";
+    Layout = "~/Views/_layout.cshtml";
+}
+&nbsp;&nbsp;&nbsp;&nbsp;
+<h2 align="center">Match Details</h2>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<table class="table" align="center">
+    <tr>
+        
+        <td>
+            <table class="table" align="center">
+           
+
+                @foreach (var item in Model.Where(i => i.Scorrer.TeamId == i.HomeTeamId))
+            {
+                    <tr align="left">
+
+                        <td>
+                        @item.Min &nbsp;<img src="@item.Statistics.Picture" />&nbsp;@item.Scorrer.Name  @item.Scorrer.LastName
+                              
+                        </td>
+
+
+
+                    </tr>
+                }
+            </table>
+        </td>
+        <td>
+            <table class="table" align="center">
+                
+                
+                @foreach (var item in Model.Where(i => i.Scorrer.TeamId == i.GuestTeamId))
+            {
+                   
+                    <tr align="right">
+                       
+                        <td>
+                   @item.Scorrer.Name  @item.Scorrer.LastName  &nbsp;<img src="@item.Statistics.Picture" />&nbsp;  @item.Min
+                        </td>
+
+                       
+
+                    </tr>
+                }
+            </table>
+        </td>
+    </tr>
+</table>

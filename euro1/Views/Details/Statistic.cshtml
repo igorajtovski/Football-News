@@ -1,0 +1,39 @@
+﻿@using euro1.Models
+@{
+    ViewBag.Title = "Top Scorrer";
+    Layout = "~/Views/_layout.cshtml";
+}
+
+<h1 align="center">Top Scorrer</h1>
+
+<table align="center">
+    <tr>
+        <th>Num.</th>
+       
+        <th>Goals</th>
+       
+        <th>Player</th>
+       
+        <th align="right">Team</th>
+    </tr>
+
+    @if (ViewData["Scorrer"] != null)
+    {
+
+        int count = 0;
+        foreach (Scorrer t in (IEnumerable<Scorrer>)ViewData["Scorrer"])
+        {
+            count++;
+            <tr>
+                <td> @count </td>
+                
+                <td>@t.Goals</td>
+                
+                <td align="left">@t.FName  @t.Name</td>
+                
+                <td align="left">@t.TeamName</td>
+            </tr>
+        }
+    }
+</table>
+

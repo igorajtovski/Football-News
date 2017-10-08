@@ -1,0 +1,149 @@
+﻿@using euro1.Models
+
+@{
+    ViewBag.Title = "Matches";
+    Layout = "~/Views/_layout.cshtml";
+}
+
+<meta http-equiv="refresh" content="60" />
+<h2 align="center">Matches</h2>
+<p class="timestamp" align="center">@DateTime.Now.Date.ToString("dd.MM.yyy")</p>
+ @if (User.IsInRole("Admin"))
+            {
+<p>
+    @Html.ActionLink("Add Match", "Add")
+</p>
+}
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+
+<style type="text/css">
+    .yellow {
+        background-color: lightgray;
+    }
+
+    .approved {
+        background-color: blue;
+    }
+
+    .rejected {
+        text-decoration-color: red;
+    }
+
+    .pending {
+        background-color: yellow;
+    }
+</style>
+<table align="center">
+    
+
+@foreach (Match m in (IEnumerable<Match>)ViewData["MyMatches"])
+{
+    
+    if (m.Date.Date == DateTime.Today.Date)
+    {
+        if (m.Date <= DateTime.Now)
+        {
+            if (User.IsInRole("Admin"))
+            {
+                
+                <tr>
+                    <td style="color: dimgray">
+                        @m.Date.ToString("HH:mm")&nbsp;&nbsp;&nbsp;&nbsp;
+                    </td>
+                    <td align="right">
+                        <a href="/details/create/@m.HomeTeamId" style="color: dimgray">@m.HomeTeam.Name</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                    </td>
+
+                    <td>
+                        <a href="/Details/Index/@m.MatchId" style="color: red">@m.HomeGoals - @m.AwayGoals</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                    </td>
+                    <td align="right">
+                        <a href="/details/Guests/@m.GuestTeamId" style="color: dimgray">@m.GuestTeam.Name</a>
+                    </td>
+
+                    <td>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        @Html.ActionLink("Edit Match Details", "Edit", new { id = m.MatchId }, new { Style = "color: black" })
+
+                    </td>
+                    
+                </tr>
+            }
+            else
+            {
+                if (m.Finish == false)
+                {
+    <tr class="">
+       
+        <td style="color: dimgray">
+            @m.Date.ToString("HH:mm") 
+        </td>
+            
+        <td align="right">
+            <a href="/Match/Matches/@m.HomeTeamId" style="color: dimgray">@m.HomeTeam.Name</a>
+        </td>
+
+        <td>
+            <a  href="/Details/Index/@m.MatchId" style="color: red">@m.HomeGoals - @m.AwayGoals</a>
+        </td>
+        <td align="left">
+            <a href="/Match/Matches/@m.GuestTeamId" style="color: dimgray">@m.GuestTeam.Name</a>
+        </td>
+        <td style="color: red">Live</td>
+        
+    </tr>
+                }
+                else
+                {
+                    <tr class="yellow">
+
+                        <td style="color: dimgray">
+                            @m.Date.ToString("HH:mm")
+                        </td>
+
+                        <td align="right">
+                            <a href="/Match/Matches/@m.HomeTeamId" style="color: dimgray">@m.HomeTeam.Name</a>
+                        </td>
+
+                        <td>
+                            <a href="/Details/Index/@m.MatchId" style="color: dimgray">@m.HomeGoals - @m.AwayGoals</a>
+                        </td>
+                        <td align="left">
+                            <a href="/Match/Matches/@m.GuestTeamId" style="color: dimgray">@m.GuestTeam.Name</a>
+                        </td>
+                        <td style="color: dimgray">FT</td>
+                    </tr>
+                }
+            }
+        }
+        else
+        {
+
+    <tr class="">
+
+        <td style="color: dimgray">
+            @m.Date.ToString("HH:mm") 
+        </td>
+
+        <td align="right">
+            <a href="/Match/Matches/@m.HomeTeamId" style="color: dimgray">@m.HomeTeam.Name</a>
+        </td>
+
+        <td align="center" style="color: dimgray">
+            -
+        </td>
+        <td align="left">
+            <a href="/Match/Matches/@m.GuestTeamId" style="color: dimgray">@m.GuestTeam.Name</a>
+        </td>
+        <td></td>
+    </tr>
+        }
+
+
+}
+}
+    
+
+
+</table>

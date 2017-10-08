@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <!-- Style Sheets -->
+    <link rel="stylesheet" href="~/content/styles/reset.css" />
+    <link rel="stylesheet" href="/content/styles/boxes.css" />
+    <link rel="stylesheet" href="/content/styles/site.css" />
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="col col67 logo">
+                <p><img src="~/Content/Images/laLiga.png">Spanish LaLiga<span>Football News</span></p>
+            </div>
+            <div class="col col33">
+                ...
+            </div>
+            <br class="clearFix" />
+            <div class="nav">
+                <ul>
+                    <li class=""><a href="~/Home">Home</a></li>
+                    <li><a href="~/Match">Matches</a></li>
+                    <li><a href="~/Team">Teams</a></li>
+                    <li><a href="~/Table/">League Table</a></li>
+                    <li><a href="~/Details/Statistic">Top Scorrer</a></li>
+                    @if(User.IsInRole("Admin")){
+                    <li><a href="~/ImageGallery/Upload">Event</a></li>
+                    }
+                    <li>@Html.Partial("_LoginPartial")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="pagecontent">
+            @RenderBody()
+        </div>
+    </div>
+    <div class="footer">
+        <div class="container">
+            <p>Copyright @DateTime.Now.Year Игор Ајтовски - All Rights Reserved</p>
+        </div>
+    </div>
+</body>
+</html>

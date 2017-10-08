@@ -1,0 +1,178 @@
+﻿@model  euro1.Models.Team
+@{
+    ViewBag.Title = "Team";
+   
+}
+
+<h2>Team</h2>
+
+
+
+<table class="table">
+    <tr>
+
+        <th>
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Age
+        </th>
+
+        <th>
+            Nationality
+        </th>
+
+        <th></th>
+    </tr>
+    <p>
+        <img src="@Model.Coach.Picture" />
+        @Model.Coach.Name
+    </p>
+    <tr>DEFFENDERS</tr>
+    @foreach (var item in Model.Players.Where(i => i.Position == "Deffender"))
+    {
+
+        <tr>
+            <td>
+                <a href="/Player/PlayerStatistic/@item.ID">
+                    <img src="@item.Picture" />
+                </a>
+            </td>
+            <td>
+                <a href="/Player/PlayerStatistic/@item.ID">
+                    @item.Name
+                    @item.LastName 
+                    (@item.Number)
+                </a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+           
+          
+            <td>
+                @Html.DisplayFor(modelItem => item.Nationality)
+            </td>
+
+            <td>
+
+               
+            </td>
+        </tr>
+
+
+
+    }
+</table>
+
+<table class="table">
+    <tr>
+
+        <th>
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Age
+        </th>
+
+        <th>
+            Nationality
+        </th>
+
+        <th></th>
+    </tr>
+    <tr>MIDFIELDERS</tr>
+    @foreach (var item in Model.Players.Where(i => i.Position == "Midfielder"))
+    {
+
+        <tr>
+            <td>
+                <a href="/Player/PlayerStatistic/@item.ID">
+                    <img src="@item.Picture" />
+                </a>
+            </td>
+            <td>
+                <a href="/Player/PlayerStatistic/@item.ID">
+                    @item.Name
+                    @item.LastName
+                    (@item.Number)
+                </a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Nationality)
+            </td>
+
+            <td>
+
+                
+            </td>
+        </tr>
+
+
+
+    }
+
+</table>
+<table class="table">
+    <tr>
+
+        <th>
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Age
+        </th>
+
+        <th>
+            Nationality
+        </th>
+
+        <th></th>
+    </tr>
+    <tr>FORWARDS</tr>
+    @foreach (var item in Model.Players.Where(i => i.Position == "Forward"))
+    {
+
+        <tr>
+            <td>
+                <a href="/Player/PlayerStatistic/@item.ID">
+                    <img src="@item.Picture" />
+                </a>
+            </td>
+            <td>
+                <a href="/Player/PlayerStatistic/@item.ID">
+                    @item.Name
+                    @item.LastName
+                    (@item.Number)
+                </a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Nationality)
+            </td>
+
+            <td>
+
+                
+            </td>
+        </tr>
+
+
+
+    }
+</table>
+
+

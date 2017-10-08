@@ -1,0 +1,53 @@
+﻿@using euro1.Models
+
+@{
+    ViewBag.Title = "Statistic";
+
+}
+
+<h2>Player Statistic</h2>
+@if (User.IsInRole("Admin"))
+{
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+}
+<table class="table">
+    <tr>
+        <th></th>
+        <th>PLAYER</th>
+        <th></th>
+        <th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    @foreach (Scorrer t in (IEnumerable<Scorrer>)ViewData["PlayerStat"])
+        {
+       
+        <tr>
+            <td><img src="@t.Picture"/></td>
+            <td>@t.FName @t.Name</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+           
+            <td>@t.Goals <img src="~/Content/goall.png" />&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            
+            
+            <td>@t.YellowCard <img src="~/Content/yellowCard.png" />&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            
+            <td>@t.RedCard <img src="~/Content/redCard.png" />&nbsp;&nbsp;&nbsp;&nbsp;</td>
+@if (User.IsInRole("Admin"))
+{
+            <td>
+
+                @Html.ActionLink("Edit", "Edit", new { id = t.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = t.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = t.Id })
+            </td>
+}
+        </tr>
+        }
+        
+
+</table>

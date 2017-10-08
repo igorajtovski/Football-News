@@ -1,0 +1,88 @@
+﻿@using euro1.Models
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_layout.cshtml";
+}
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+
+<h2 align ="center">Matches</h2>
+
+
+
+<style type="text/css">
+    .yellow {
+        background-color: lightgray;
+    }
+
+    .approved {
+        background-color: green;
+    }
+
+    .rejected {
+        text-decoration-color: red;
+    }
+
+    .pending {
+        background-color: lime;
+    }
+</style>
+<table class="table" align="center">
+    
+    
+
+   @foreach (Match m in (IEnumerable<Match>)ViewData["MyMatches"])
+   {
+
+       
+           if (m.Date <= DateTime.Now)
+           {
+               
+                <tr>
+                  
+                    
+                    <td>
+                        @m.HomeTeam.Name
+                    </td>
+        
+                    <td>
+                        <a href="/Details/Index/@m.MatchId" style="color: black">@m.HomeGoals - @m.AwayGoals</a>
+                    </td>
+                    <td>
+                        @m.GuestTeam.Name
+                    </td>
+                    <td>
+                        @m.Date.ToString("dd.MM.yyy")
+                    </td>
+
+                </tr>
+              
+           }
+           else
+           {
+
+            <tr>
+
+                <td>
+                   @m.HomeTeam.Name
+                </td>
+
+                <td>
+                   - 
+                </td>
+                <td>
+                    @m.GuestTeam.Name
+                </td>
+                <td>
+                    @m.Date.ToString("dd.MM.yyy")
+                </td>
+            </tr>
+           }
+
+
+       }
+   
+    
+
+</table>
